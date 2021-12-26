@@ -2,9 +2,9 @@ class AppAssets {
   AppAssets._();
 
   static final String worldLang = 'assets/images/icons/svg/world.svg';
-  static final String user_privacy =
-      'assets/images/icons/svg/user-privacy-security.svg';
+  static final String user_privacy = 'assets/images/icons/svg/user-privacy-security.svg';
   static final String use_policy = 'assets/images/icons/svg/privecy.svg';
+  static final String bill = 'assets/images/icons/png/invoice.png';
   static String splash_logo_white = 'assets/images/logo/splash_logo_white.png';
   static String home_btnv_png = 'assets/images/image/splash_logo.jpg';
   static String logo = 'assets/images/image/logo.png';

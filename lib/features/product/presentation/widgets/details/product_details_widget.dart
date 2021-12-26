@@ -21,6 +21,7 @@ import 'package:ojos_app/core/res/width_height.dart';
 import 'package:ojos_app/core/ui/dailog/add_to_cart_dialog.dart';
 import 'package:ojos_app/core/ui/dailog/login_first_dialog.dart';
 import 'package:ojos_app/core/ui/dailog/soon_dailog.dart';
+import 'package:ojos_app/core/ui/tab_bar/tab_bar.dart';
 import 'package:ojos_app/core/ui/widget/image/image_caching.dart';
 import 'package:ojos_app/core/ui/widget/text/normal_form_field.dart';
 import 'package:ojos_app/core/ui/widget/title_with_view_all_widget.dart';
@@ -201,7 +202,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                 ),
               ),
               SizedBox(height: 5.h,),
-              Row(
+              /*Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
@@ -306,7 +307,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                   ),
                 ],
               ),
-              SizedBox(height: 8.h,),
+              SizedBox(height: 8.h,),*/
 
               _buildAddToCartAndFavoriteOfferWidget(
                   context: context,
@@ -1400,6 +1401,114 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           color: globalColor.white,
                           width: 20.w,
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          SizedBox(width: 5.w,),
+          Consumer<CartProvider>(
+            builder: (context, quizProvider, child) {
+              return Expanded(
+                flex: 3,
+                child: InkWell(
+                  onTap: () async {
+                    if (await UserRepository.hasToken && isAuth) {
+                      // if((color!=null&&color.id!=null) && SizeModeId!=null ){
+                      //
+                      //
+                      // }else{
+                      //   appConfig.showToast(msg:Translations.of(context).translate('you_must_choose_size_and_color'));
+                      // }
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                TabBarDemo(),
+                          ));
+                     /* quizProvider.addItemToCart(CartEntity(
+                          id: productEntity.id,
+                          productEntity: ProductEntity(
+                              discount_type: '',
+                              name: productEntity.name,
+                              image: productEntity.image,
+                              rate: '',
+                              review_count: 0,
+                              isReview: true,
+                              isFavorite: false,
+                              product_as_same: [],
+                              quantity: null,
+                              price: productEntity.price,
+                              discount_price: productEntity.discount_price,
+                              category_id: productEntity.category_id,
+                              is_new: null,
+                              description: '',
+                              id: productEntity.id),
+                          // isGlasses: productEntity.isGlasses,
+                          // colorId: color?.id,
+                          // lensSize: null,
+                          // sizeForLeftEye: null,
+                          // SizeModeId: SizeModeId,
+                          // sizeForRightEye: null,
+                          // argsForGlasses: selectLensesArgs,
+                          count: 1));
+                      print('${quizProvider.getItems()!.length}');
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AddToCartDialog(),
+                      );*/
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => LoginFirstDialog(),
+                      );
+                    }
+
+                    // quizProvider.addItemToCart(CartEntity(
+                    //     id: productEntity.id,
+                    //     productEntity: productEntity,
+                    //     isGlasses: productEntity.isGlasses,
+                    //     addSize: null,
+                    //     ipdSize: null,
+                    //     sizeForLeftEye: null,
+                    //     sizeForRightEye: null,
+                    //     count: 1));
+                    // print('${quizProvider.getItems().length}');
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (ctx) => AddToCartDialog(),
+                    // );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: globalColor.primaryColor,
+                      borderRadius: BorderRadius.circular(16.0.w),
+                      // border: Border.all(
+                      //     width: 0.5,
+                      //     color: globalColor.grey.withOpacity(0.3))
+                    ),
+                    height: 40.w,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            Translations.of(context).translate('making'),
+                            style: textStyle.smallTSBasic.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: globalColor.white),
+                          ),
+                        ),
+                        // SvgPicture.asset(
+                        //   AppAssets.cart_nav_bar,
+                        //   color: globalColor.white,
+                        //   width: 20.w,
+                        // ),
                       ],
                     ),
                   ),

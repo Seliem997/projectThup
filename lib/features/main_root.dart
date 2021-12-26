@@ -42,6 +42,7 @@ import 'package:ojos_app/features/reviews/presentation/pages/reviews_page.dart';
 import 'package:ojos_app/features/section/presentation/pages/section_page.dart';
 import 'package:ojos_app/features/user_management/domain/repositories/user_repository.dart';
 import 'package:ojos_app/features/user_management/presentation/pages/sign_in_page.dart';
+import 'package:ojos_app/features/wallet/presentation/pages/wallet_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -613,14 +614,17 @@ class _MainRootPageState extends State<MainRootPage>
       // getMaterialResideMenuItem('wallet_drawer', AppAssets.wallet_drawer,
       //     state: MenuSpecItem.WalletPage),
 
-      InkWell(
-        onTap: () {
-          Get.Get.to(MyOrderPage());
+      InkWell(        //////////////////////////////////////////////////////////// المحفظة سليم ////////////////////////////////////////////////////////////////////////
+      onTap: () {
+          Get.Get.to(WalletPage());
         },
         child: getMaterialResideMenuItem(
-            'Wallet', AppAssets.wallet_drawer, tralingfunc: () {
-          Get.Get.to(MyOrderPage());
-        },
+            'Wallet',
+            AppAssets.wallet_drawer,
+            // state: MenuSpecItem.WalletPage,
+            tralingfunc: () {
+              Get.Get.to(WalletPage());
+            },
             leadingWidget: Container(
               width: 2000,
             )),
@@ -643,7 +647,6 @@ class _MainRootPageState extends State<MainRootPage>
               width: 2000,
             )),
       ),
-      //////////////////////////////////////////////////////////// المحفظة سليم ////////////////////////////////////////////////////////////////////////
       InkWell(
         onTap: () {
           Get.Get.to(MyOrderPage());
@@ -660,6 +663,19 @@ class _MainRootPageState extends State<MainRootPage>
       //
       // getMaterialResideMenuItem('rated_drawer', AppAssets.review_drawer,
       //     state: MenuSpecItem.ReviewsPage),
+
+      InkWell(        // ******************************************************* صور الفواتير الفاتورة سليم *******************************************************
+        onTap: () {
+          Get.Get.toNamed(TermsCondetion.routeName);
+        },
+        child: getMaterialResideMenuItem(
+            'Bill Photos', AppAssets.test_result_svg, tralingfunc: () {
+          Get.Get.toNamed(TermsCondetion.routeName);
+        },
+            leadingWidget: Container(
+              width: 2000,
+            )),
+      ),
 
       InkWell(
         onTap: () {
@@ -694,7 +710,7 @@ class _MainRootPageState extends State<MainRootPage>
       //   color: globalColor.grey.withOpacity(0.5),
       // ),
       SizedBox(
-        height: 20.h,
+        height: 5.h,
       ),
       Center(
           child: GestureDetector(
@@ -708,7 +724,7 @@ class _MainRootPageState extends State<MainRootPage>
       ),
           )),
       Container(
-        height: 10.h,
+        height: 5.h,
       ),
       Row(
         children: [
@@ -723,244 +739,249 @@ class _MainRootPageState extends State<MainRootPage>
         ],
       ),
 
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          NetworkWidget(
-            builder: (BuildContext context, AboutAppResult aboutAppResult) {
-              return Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      _lunchSocialMediaAction(context, aboutAppResult.twitter!);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(AppAssets.whats,
-                              color: Colors.white),
-                        ),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      _lunchSocialMediaAction(context, aboutAppResult.twitter!);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(AppAssets.twitter,
-                              color: Colors.white),
-                        ),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      _lunchSocialMediaAction(
-                          context, aboutAppResult.instagram!);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(AppAssets.snapchat,
-                              color: Colors.white),
-                        ),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      _lunchSocialMediaAction(
-                          context, aboutAppResult.instagram!);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(AppAssets.instagram,
-                              color: Colors.white),
-                        ),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      _lunchSocialMediaAction(
-                          context, aboutAppResult.instagram!);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.asset(AppAssets.tiktok,
-                              color: Colors.white),
-                        ),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      String configEmail =
-                          'mailto:${aboutAppResult.email ?? "email@gmail.com"}'
-                          '?subject=Email about $APP_NAME   &'
-                          'body=Thank you for a such great App';
-                      _lunchSocialMediaAction(context, configEmail);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
-                      child: CircleAvatar(
-                        child: Icon(Icons.email_outlined,
-                            color: globalColor.white),
-                        backgroundColor: globalColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-            loadingWidgetBuilder: (BuildContext context) {
-              return Container(
-                  // width: 60,
-                  // height: 60,
+      Padding(
+        padding: EdgeInsets.only(bottom: 20.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            NetworkWidget(
+              builder: (BuildContext context, AboutAppResult aboutAppResult) {
+                return Expanded(
                   child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            globalColor.primaryColor),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            globalColor.primaryColor),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            globalColor.primaryColor),
-                      ),
-                    ),
-                  ),
-                ],
-              ));
-            },
-            fetcher: () {
-              return GetAboutApp(locator<CoreRepository>())(
-                GetAboutAppParams(
-                  cancelToken: _cancelToken,
-                ),
-              );
-            },
-          ),
-          isAuth!
-              ? StatefulBuilder(builder: (BuildContext context,
-                  void Function(void Function()) setState) {
-                  return InkWell(
-                    onTap: () {
-                      _onItemMenuPress(MenuSpecItem.SignOut);
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: globalColor.primaryColor,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _lunchSocialMediaAction(context, aboutAppResult.twitter!);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(AppAssets.whats,
+                                  color: Colors.white),
                             ),
-                            borderRadius: BorderRadius.circular(6)),
-                        margin: EdgeInsets.only(
-                            // right: isRtl(context) ? 10.0 : 0.0,
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _lunchSocialMediaAction(context, aboutAppResult.twitter!);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(AppAssets.twitter,
+                                  color: Colors.white),
                             ),
-                        child: new Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    Translations.of(context)
-                                        .translate('logout'),
-                                    style: textStyle.normalTSBasic.copyWith(
-                                      color: globalColor.primaryColor,
-                                    ),
-                                  )
-                                ],
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _lunchSocialMediaAction(
+                              context, aboutAppResult.instagram!);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(AppAssets.snapchat,
+                                  color: Colors.white),
+                            ),
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _lunchSocialMediaAction(
+                              context, aboutAppResult.instagram!);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(AppAssets.instagram,
+                                  color: Colors.white),
+                            ),
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _lunchSocialMediaAction(
+                              context, aboutAppResult.instagram!);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(AppAssets.tiktok,
+                                  color: Colors.white),
+                            ),
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          String configEmail =
+                              'mailto:${aboutAppResult.email ?? "email@gmail.com"}'
+                              '?subject=Email about $APP_NAME   &'
+                              'body=Thank you for a such great App';
+                          _lunchSocialMediaAction(context, configEmail);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 1,top: 3,bottom: 3,end: 1),
+                          child: CircleAvatar(
+                            child: Icon(Icons.email_outlined,
+                                color: globalColor.white),
+                            backgroundColor: globalColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              loadingWidgetBuilder: (BuildContext context) {
+                return Container(
+                    // width: 60,
+                    // height: 60,
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              globalColor.primaryColor),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              globalColor.primaryColor),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              globalColor.primaryColor),
+                        ),
+                      ),
+                    ),
+                  ],
+                ));
+              },
+              fetcher: () {
+                return GetAboutApp(locator<CoreRepository>())(
+                  GetAboutAppParams(
+                    cancelToken: _cancelToken,
+                  ),
+                );
+              },
+            ),
+            isAuth!
+                ? StatefulBuilder(builder: (BuildContext context,
+                    void Function(void Function()) setState) {
+                    return InkWell(
+                      onTap: () {
+                        _onItemMenuPress(MenuSpecItem.SignOut);
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: globalColor.primaryColor,
                               ),
-                              margin: EdgeInsets.only(
-                                  left: 6.0, top: 1, bottom: 1, right: 6),
-                            ),
-                          ],
-                        )),
-                  );
-                })
-              : StatefulBuilder(builder: (BuildContext context,
-                  void Function(void Function()) setState) {
-                  return InkWell(
-                    onTap: () {
-                      _onItemMenuPress(MenuSpecItem.SignInPage);
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: globalColor.primaryColor,
-                            ),
-                            borderRadius: BorderRadius.circular(6)),
-                        margin: EdgeInsets.only(
-                            // right: isRtl(context) ? 10.0 : 0.0,
-                            ),
-                        child: new Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    Translations.of(context).translate('login'),
-                                    style: textStyle.normalTSBasic.copyWith(
-                                      color: globalColor.primaryColor,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                                ],
+                              borderRadius: BorderRadius.circular(6)),
+                          margin: EdgeInsets.only(
+                              // right: isRtl(context) ? 10.0 : 0.0,
                               ),
-                              margin: EdgeInsets.only(
-                                  left: 6.0, top: 1, bottom: 1, right: 6),
-                            ),
-                          ],
-                        )),
-                  );
-                })
-        ],
+                          child: new Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      Translations.of(context)
+                                          .translate('logout'),
+                                      style: textStyle.normalTSBasic.copyWith(
+                                        color: globalColor.primaryColor,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                margin: EdgeInsets.only(
+                                    left: 6.0, top: 1, bottom: 1, right: 6),
+                              ),
+                            ],
+                          )),
+                    );
+                  })
+                : StatefulBuilder(builder: (BuildContext context,
+                    void Function(void Function()) setState) {
+                    return InkWell(
+                      onTap: () {
+                        _onItemMenuPress(MenuSpecItem.SignInPage);
+                      },
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: globalColor.primaryColor,
+                              ),
+                              borderRadius: BorderRadius.circular(6)),
+                          margin: EdgeInsets.only(
+                              // right: isRtl(context) ? 10.0 : 0.0,
+                              ),
+                          child: new Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      Translations.of(context).translate('login'),
+                                      style: textStyle.normalTSBasic.copyWith(
+                                        color: globalColor.primaryColor,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                margin: EdgeInsets.only(
+                                    left: 6.0, top: 1, bottom: 1, right: 6),
+                              ),
+                            ],
+                          )),
+                    );
+                  })
+          ],
+        ),
       ),
     ];
   }

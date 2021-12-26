@@ -16,6 +16,7 @@ import 'package:ojos_app/core/res/text_style.dart';
 import 'package:ojos_app/core/res/width_height.dart';
 import 'package:ojos_app/core/ui/dailog/add_to_cart_dialog.dart';
 import 'package:ojos_app/core/ui/dailog/login_first_dialog.dart';
+import 'package:ojos_app/core/ui/tab_bar/tab_bar.dart';
 import 'package:ojos_app/core/ui/widget/image/image_caching.dart';
 import 'package:ojos_app/core/ui/widget/title_with_view_all_widget.dart';
 import 'package:ojos_app/features/product/domin/entities/cart_entity.dart';
@@ -528,7 +529,7 @@ class _LensesDetailsWidgetState extends State<LensesDetailsWidget> {
                   ),
                 ],
               )),
-          Padding(
+         /* Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
@@ -652,7 +653,7 @@ class _LensesDetailsWidgetState extends State<LensesDetailsWidget> {
               ),
             ],
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(height: 8.h,),*/
         ],
       ),
     );
@@ -1199,124 +1200,57 @@ class _LensesDetailsWidgetState extends State<LensesDetailsWidget> {
     return Container(
       padding:
           const EdgeInsets.fromLTRB(EdgeMargin.min, 0.0, EdgeMargin.min, 0.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
         children: [
-          Expanded(
-            flex: 3,
-            child: InkWell(
-              onTap: () async {
-                final result =
-                    await AddOrRemoveFavorite(locator<ProductRepository>())(
-                  AddOrRemoveFavoriteParams(
-                      cancelToken: widget.cancelToken,
-                      productId: widget.product.id!),
-                );
-                if (result.hasDataOnly) {
-                  if (mounted)
-                    setState(() {
-                      // isRemoveFromFavorite = true;
-                      //
-                      // BlocProvider.of<ApplicationBloc>(context)
-                      //     .state
-                      //     .setRefreshFavoritePath(true);
-                      widget.productDetails.isFavorite =
-                          !widget.productDetails.isFavorite;
-                      // widget.path.setIsFav(!widget.path.isFav);
-                    });
-                } else if (result.hasErrorOnly || result.hasDataAndError)
-                  Fluttertoast.showToast(
-                      msg: Translations.of(context)
-                          .translate('something_went_wrong_try_again'));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: globalColor.white,
-                    borderRadius: BorderRadius.circular(16.0.w),
-                    border: Border.all(
-                        width: 0.5, color: globalColor.grey.withOpacity(0.3))),
-                height: 35.w,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SvgPicture.asset(
-                      widget.productDetails.isFavorite
-                          ? AppAssets.love_fill
-                          : AppAssets.love,
-                      //color: globalColor.black,
-                      width: 20.w,
-                    ),
-                    Text(
-                      Translations.of(context).translate('favorite'),
-                      style: textStyle.smallTSBasic.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: globalColor.primaryColor),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          HorizontalPadding(
-            percentage: 2.0,
-          ),
-          Consumer<CartProvider>(
-            builder: (context, quizProvider, child) {
-              return Expanded(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
                 flex: 3,
                 child: InkWell(
                   onTap: () async {
-                    if (await UserRepository.hasToken && isAuth) {
-                      // if(_checkStatus()) {
-                      //
-                      // }
-                      // else{
-                      //   appConfig.showToast(
-                      //       msg: Translations.of(context).translate('please_choose_lens_sizes'),
-                      //       backgroundColor: globalColor.primaryColor,
-                      //       textColor: globalColor.white
-                      //   );
-                      // }
-                      quizProvider.addItemToCart(CartEntity(
-                          id: productEntity.id!,
-                          productEntity: productEntity,
-                          //isGlasses: false,
-                          // SizeModeId: null,
-                          //  colorId: _colorSelect?.id,
-                          //  lensSize: _selectedForAddIPD,
-                          //   sizeForLeftEye: _selectedForLeftEye,
-                          //   sizeForRightEye: _selectedForRightEye,
-                          count: 1));
-                      print('${quizProvider.getItems()!.length}');
-                      showDialog(
-                        context: context,
-                        builder: (ctx) => AddToCartDialog(),
-                      );
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (ctx) => LoginFirstDialog(),
-                      );
-                    }
+                    final result =
+                        await AddOrRemoveFavorite(locator<ProductRepository>())(
+                      AddOrRemoveFavoriteParams(
+                          cancelToken: widget.cancelToken,
+                          productId: widget.product.id!),
+                    );
+                    if (result.hasDataOnly) {
+                      if (mounted)
+                        setState(() {
+                          // isRemoveFromFavorite = true;
+                          //
+                          // BlocProvider.of<ApplicationBloc>(context)
+                          //     .state
+                          //     .setRefreshFavoritePath(true);
+                          widget.productDetails.isFavorite =
+                              !widget.productDetails.isFavorite;
+                          // widget.path.setIsFav(!widget.path.isFav);
+                        });
+                    } else if (result.hasErrorOnly || result.hasDataAndError)
+                      Fluttertoast.showToast(
+                          msg: Translations.of(context)
+                              .translate('something_went_wrong_try_again'));
                   },
                   child: Container(
                     decoration: BoxDecoration(
                         color: globalColor.white,
                         borderRadius: BorderRadius.circular(16.0.w),
                         border: Border.all(
-                            width: 0.5,
-                            color: globalColor.grey.withOpacity(0.3))),
+                            width: 0.5, color: globalColor.grey.withOpacity(0.3))),
                     height: 35.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SvgPicture.asset(
-                          AppAssets.cart_nav_bar,
-                          color: globalColor.black,
+                          widget.productDetails.isFavorite
+                              ? AppAssets.love_fill
+                              : AppAssets.love,
+                          //color: globalColor.black,
                           width: 20.w,
                         ),
                         Text(
-                          Translations.of(context).translate('add_to_cart'),
+                          Translations.of(context).translate('favorite'),
                           style: textStyle.smallTSBasic.copyWith(
                               fontWeight: FontWeight.w500,
                               color: globalColor.primaryColor),
@@ -1325,36 +1259,216 @@ class _LensesDetailsWidgetState extends State<LensesDetailsWidget> {
                     ),
                   ),
                 ),
+              ),
+              HorizontalPadding(
+                percentage: 2.0,
+              ),
+              Consumer<CartProvider>(
+                builder: (context, quizProvider, child) {
+                  return Expanded(
+                    flex: 3,
+                    child: InkWell(
+                      onTap: () async {
+                        if (await UserRepository.hasToken && isAuth) {
+                          // if(_checkStatus()) {
+                          //
+                          // }
+                          // else{
+                          //   appConfig.showToast(
+                          //       msg: Translations.of(context).translate('please_choose_lens_sizes'),
+                          //       backgroundColor: globalColor.primaryColor,
+                          //       textColor: globalColor.white
+                          //   );
+                          // }
+                          quizProvider.addItemToCart(CartEntity(
+                              id: productEntity.id!,
+                              productEntity: productEntity,
+                              //isGlasses: false,
+                              // SizeModeId: null,
+                              //  colorId: _colorSelect?.id,
+                              //  lensSize: _selectedForAddIPD,
+                              //   sizeForLeftEye: _selectedForLeftEye,
+                              //   sizeForRightEye: _selectedForRightEye,
+                              count: 1));
+                          print('${quizProvider.getItems()!.length}');
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AddToCartDialog(),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => LoginFirstDialog(),
+                          );
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: globalColor.white,
+                            borderRadius: BorderRadius.circular(16.0.w),
+                            border: Border.all(
+                                width: 0.5,
+                                color: globalColor.grey.withOpacity(0.3))),
+                        height: 35.w,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SvgPicture.asset(
+                              AppAssets.cart_nav_bar,
+                              color: globalColor.black,
+                              width: 20.w,
+                            ),
+                            Text(
+                              Translations.of(context).translate('add_to_cart'),
+                              style: textStyle.smallTSBasic.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: globalColor.primaryColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              // Expanded(
+              //   flex: 3,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //         color: globalColor.white,
+              //         borderRadius: BorderRadius.circular(16.0.w),
+              //         border: Border.all(
+              //             width: 0.5, color: globalColor.grey.withOpacity(0.3))),
+              //     height: 35.w,
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //       children: [
+              //         SvgPicture.asset(
+              //           AppAssets.cart_nav_bar,
+              //           color: globalColor.black,
+              //           width: 20.w,
+              //         ),
+              //         Text(
+              //           Translations.of(context).translate('add_to_cart'),
+              //           style: textStyle.smallTSBasic.copyWith(
+              //               fontWeight: FontWeight.w500,
+              //               color: globalColor.primaryColor),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+          SizedBox(height: 10.h,),
+          Container(width: double.infinity,child: Consumer<CartProvider>(
+            builder: (context, quizProvider, child) {
+              return Expanded(
+                flex: 3,
+                child: InkWell(
+                  onTap: () async {
+                    if (await UserRepository.hasToken && isAuth) {
+                      // if((color!=null&&color.id!=null) && SizeModeId!=null ){
+                      //
+                      //
+                      // }else{
+                      //   appConfig.showToast(msg:Translations.of(context).translate('you_must_choose_size_and_color'));
+                      // }
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                TabBarDemo(),
+                          ));
+                      /* quizProvider.addItemToCart(CartEntity(
+                          id: productEntity.id,
+                          productEntity: ProductEntity(
+                              discount_type: '',
+                              name: productEntity.name,
+                              image: productEntity.image,
+                              rate: '',
+                              review_count: 0,
+                              isReview: true,
+                              isFavorite: false,
+                              product_as_same: [],
+                              quantity: null,
+                              price: productEntity.price,
+                              discount_price: productEntity.discount_price,
+                              category_id: productEntity.category_id,
+                              is_new: null,
+                              description: '',
+                              id: productEntity.id),
+                          // isGlasses: productEntity.isGlasses,
+                          // colorId: color?.id,
+                          // lensSize: null,
+                          // sizeForLeftEye: null,
+                          // SizeModeId: SizeModeId,
+                          // sizeForRightEye: null,
+                          // argsForGlasses: selectLensesArgs,
+                          count: 1));
+                      print('${quizProvider.getItems()!.length}');
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AddToCartDialog(),
+                      );*/
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => LoginFirstDialog(),
+                      );
+                    }
+
+                    // quizProvider.addItemToCart(CartEntity(
+                    //     id: productEntity.id,
+                    //     productEntity: productEntity,
+                    //     isGlasses: productEntity.isGlasses,
+                    //     addSize: null,
+                    //     ipdSize: null,
+                    //     sizeForLeftEye: null,
+                    //     sizeForRightEye: null,
+                    //     count: 1));
+                    // print('${quizProvider.getItems().length}');
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (ctx) => AddToCartDialog(),
+                    // );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: globalColor.primaryColor,
+                      borderRadius: BorderRadius.circular(16.0.w),
+                      // border: Border.all(
+                      //     width: 0.5,
+                      //     color: globalColor.grey.withOpacity(0.3))
+                    ),
+                    height: 40.w,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            Translations.of(context).translate('making'),
+                            style: textStyle.smallTSBasic.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: globalColor.white),
+                          ),
+                        ),
+                        // SvgPicture.asset(
+                        //   AppAssets.cart_nav_bar,
+                        //   color: globalColor.white,
+                        //   width: 20.w,
+                        // ),
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
           ),
-          // Expanded(
-          //   flex: 3,
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //         color: globalColor.white,
-          //         borderRadius: BorderRadius.circular(16.0.w),
-          //         border: Border.all(
-          //             width: 0.5, color: globalColor.grey.withOpacity(0.3))),
-          //     height: 35.w,
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: [
-          //         SvgPicture.asset(
-          //           AppAssets.cart_nav_bar,
-          //           color: globalColor.black,
-          //           width: 20.w,
-          //         ),
-          //         Text(
-          //           Translations.of(context).translate('add_to_cart'),
-          //           style: textStyle.smallTSBasic.copyWith(
-          //               fontWeight: FontWeight.w500,
-          //               color: globalColor.primaryColor),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
+              ),
         ],
       ),
     );

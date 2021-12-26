@@ -379,140 +379,140 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               context: context,
                                               width: width,
                                               height: height),
-                                          VerticalPadding(
-                                            percentage: 2,
-                                          ),
-                                          Container(
-                                            color: Colors.grey.withOpacity(.2),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    Translations.of(context)
-                                                        .translate('fasel'),
-                                                    style: textStyle
-                                                        .smallTSBasic
-                                                        .copyWith(
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    HorizontalPadding(
-                                                        percentage: 2),
-                                                    Expanded(
-                                                      child: OutlineButton(
-                                                        disabledBorderColor:
-                                                            globalColor.black,
-                                                        borderSide: BorderSide(
-                                                          width: .5,
-                                                          color: Colors.black,
-                                                          style:
-                                                              BorderStyle.solid,
-                                                        ),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8)),
-                                                        onPressed: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        TabBarDemo(),
-                                                              ));
-                                                        },
-                                                        child: Text(
-                                                          Translations.of(
-                                                                  context)
-                                                              .translate(
-                                                                  'online'),
-                                                          style: textStyle
-                                                              .smallTSBasic
-                                                              .copyWith(
-                                                            color: globalColor
-                                                                .grey,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    HorizontalPadding(
-                                                        percentage: 2),
-                                                    Expanded(
-                                                      child: OutlineButton(
-                                                        borderSide: BorderSide(
-                                                          width: .5,
-                                                          color: Colors.black,
-                                                          style:
-                                                              BorderStyle.solid,
-                                                        ),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8)),
-                                                        onPressed: () {
-                                                          launchWhatsApp(
-                                                              phone:
-                                                                  "+966555845631",
-                                                              message:
-                                                                  "مرحبا اريد تفصيل ثوب");
-                                                        },
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Text(
-                                                              Translations.of(
-                                                                      context)
-                                                                  .translate(
-                                                                      'near'),
-                                                              style: textStyle
-                                                                  .middleTSBasic
-                                                                  .copyWith(
-                                                                fontSize: 16,
-                                                                color:
-                                                                    globalColor
-                                                                        .grey,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                            ),
-                                                            SizedBox(width: 4),
-                                                            Image.asset(
-                                                              'assets/images/icons/png/whats.png',
-                                                              height: 20,
-                                                              width: 20,
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    HorizontalPadding(
-                                                        percentage: 2),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                          // VerticalPadding(
+                                          //   percentage: 2,
+                                          // ),
+                                          // Container(
+                                          //   color: Colors.grey.withOpacity(.2),
+                                          //   child: Column(
+                                          //     crossAxisAlignment:
+                                          //         CrossAxisAlignment.start,
+                                          //     children: [
+                                          //       Padding(
+                                          //         padding:
+                                          //             const EdgeInsets.all(8.0),
+                                          //         child: Text(
+                                          //           Translations.of(context)
+                                          //               .translate('fasel'),
+                                          //           style: textStyle
+                                          //               .smallTSBasic
+                                          //               .copyWith(
+                                          //             color: Colors.black,
+                                          //             fontWeight:
+                                          //                 FontWeight.w600,
+                                          //           ),
+                                          //         ),
+                                          //       ),
+                                          //       Row(
+                                          //         mainAxisAlignment:
+                                          //             MainAxisAlignment
+                                          //                 .spaceAround,
+                                          //         children: [
+                                          //           HorizontalPadding(
+                                          //               percentage: 2),
+                                          //           Expanded(
+                                          //             child: OutlineButton(
+                                          //               disabledBorderColor:
+                                          //                   globalColor.black,
+                                          //               borderSide: BorderSide(
+                                          //                 width: .5,
+                                          //                 color: Colors.black,
+                                          //                 style:
+                                          //                     BorderStyle.solid,
+                                          //               ),
+                                          //               shape:
+                                          //                   RoundedRectangleBorder(
+                                          //                       borderRadius:
+                                          //                           BorderRadius
+                                          //                               .circular(
+                                          //                                   8)),
+                                          //               onPressed: () {
+                                          //                 Navigator.push(
+                                          //                     context,
+                                          //                     MaterialPageRoute(
+                                          //                       builder:
+                                          //                           (context) =>
+                                          //                               TabBarDemo(),
+                                          //                     ));
+                                          //               },
+                                          //               child: Text(
+                                          //                 Translations.of(
+                                          //                         context)
+                                          //                     .translate(
+                                          //                         'online'),
+                                          //                 style: textStyle
+                                          //                     .smallTSBasic
+                                          //                     .copyWith(
+                                          //                   color: globalColor
+                                          //                       .grey,
+                                          //                   fontWeight:
+                                          //                       FontWeight.w600,
+                                          //                 ),
+                                          //               ),
+                                          //             ),
+                                          //           ),
+                                          //           HorizontalPadding(
+                                          //               percentage: 2),
+                                          //           Expanded(
+                                          //             child: OutlineButton(
+                                          //               borderSide: BorderSide(
+                                          //                 width: .5,
+                                          //                 color: Colors.black,
+                                          //                 style:
+                                          //                     BorderStyle.solid,
+                                          //               ),
+                                          //               shape:
+                                          //                   RoundedRectangleBorder(
+                                          //                       borderRadius:
+                                          //                           BorderRadius
+                                          //                               .circular(
+                                          //                                   8)),
+                                          //               onPressed: () {
+                                          //                 launchWhatsApp(
+                                          //                     phone:
+                                          //                         "+966555845631",
+                                          //                     message:
+                                          //                         "مرحبا اريد تفصيل ثوب");
+                                          //               },
+                                          //               child: Row(
+                                          //                 mainAxisAlignment:
+                                          //                     MainAxisAlignment
+                                          //                         .center,
+                                          //                 children: [
+                                          //                   Text(
+                                          //                     Translations.of(
+                                          //                             context)
+                                          //                         .translate(
+                                          //                             'near'),
+                                          //                     style: textStyle
+                                          //                         .middleTSBasic
+                                          //                         .copyWith(
+                                          //                       fontSize: 16,
+                                          //                       color:
+                                          //                           globalColor
+                                          //                               .grey,
+                                          //                       fontWeight:
+                                          //                           FontWeight
+                                          //                               .w600,
+                                          //                     ),
+                                          //                   ),
+                                          //                   SizedBox(width: 4),
+                                          //                   Image.asset(
+                                          //                     'assets/images/icons/png/whats.png',
+                                          //                     height: 20,
+                                          //                     width: 20,
+                                          //                   )
+                                          //                 ],
+                                          //               ),
+                                          //             ),
+                                          //           ),
+                                          //           HorizontalPadding(
+                                          //               percentage: 2),
+                                          //         ],
+                                          //       ),
+                                          //     ],
+                                          //   ),
+                                          // ),
                                           VerticalPadding(
                                             percentage: 2,
                                           ),

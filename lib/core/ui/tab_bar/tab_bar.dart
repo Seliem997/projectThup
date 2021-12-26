@@ -2,10 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ojos_app/core/localization/translations.dart';
 import 'package:ojos_app/core/res/app_assets.dart';
 import 'package:ojos_app/core/res/global_color.dart';
+import 'package:ojos_app/core/res/screen/horizontal_padding.dart';
 import 'package:ojos_app/core/res/text_style.dart';
 import 'package:ojos_app/features/order/presentation/pages/attripute.dart';
+import 'package:share/share.dart';
 
 class TabBarDemo extends StatefulWidget {
   @override
@@ -65,69 +69,89 @@ class _TabBarDemoState extends State<TabBarDemo> {
         body: TabBarView(
           children: [
             OrderAttribute(),
-            OutlineButton(
-            borderSide: BorderSide(
-              width: .5,
-              color: Colors.black,
-              style:
-              BorderStyle.solid,
-            ),
-            shape:
-            RoundedRectangleBorder(
-                borderRadius:
-                BorderRadius
-                    .circular(
-                    8)),
-            onPressed: () {
-              launchWhatsApp(
-                  phone:
-                  "+966555845631",
-                  message:
-                  "مرحبا اريد تفصيل ثوب");
-            },
-            child: Row(
-              mainAxisAlignment:
-              MainAxisAlignment
-                  .center,
+            Column(       //********************************* اطلب الخياط***************************************
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  ' اضغط ',
+                  Translations.of(context)
+                      .translate('tailor_head'),
                   style: textStyle
-                      .middleTSBasic
+                      .bigTSBasic
                       .copyWith(
-                    fontSize: 18,
-                    color:
-                    globalColor
-                        .black,
+                    color: globalColor.primaryColor,
                     fontWeight:
-                    FontWeight
-                        .bold,
+                    FontWeight.w600,
                   ),
                 ),
-                SizedBox(width: 4),
-                Image.asset(
-                  'assets/images/icons/png/whats.png',
-                  height: 150,
-                  width: 150,
-                ),
-                SizedBox(width: 4),
                 Text(
-                  ' هنا ',
+                  Translations.of(context)
+                      .translate('tailor_text'),
                   style: textStyle
-                      .middleTSBasic
+                      .subBigTSBasic
                       .copyWith(
-                    fontSize: 18,
-                    color:
-                    globalColor
-                        .black,
+                    color: Colors.black,
                     fontWeight:
-                    FontWeight
-                        .bold,
+                    FontWeight.w600,
                   ),
                 ),
+
+                HorizontalPadding(
+                    percentage: 2),
+                OutlineButton(
+                  borderSide: BorderSide(
+                    width: .5,
+                    color: Colors.black,
+                    style:
+                    BorderStyle.solid,
+                  ),
+                  shape:
+                  RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius
+                          .circular(
+                          8)),
+                  onPressed: () {
+                    launchWhatsApp(
+                        phone:
+                        "+966555845631",
+                        message:
+                        "مرحبا اريد تفصيل ثوب");
+                  },
+                  child: Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment
+                        .center,
+                    children: [
+                      Text(
+                        Translations.of(
+                            context)
+                            .translate(
+                            'near'),
+                        style: textStyle
+                            .normalTSBasic
+                            .copyWith(
+                          fontSize: 22,
+                          color:
+                          globalColor
+                              .grey,
+                          fontWeight:
+                          FontWeight
+                              .bold,
+                        ),
+                      ),
+                      SizedBox(width: 8.w),
+                      Image.asset(
+                        'assets/images/icons/png/whats.png',
+                        height: 30.h,
+                        width: 30.w,
+                      )
+                    ],
+                  ),
+                ),
+                HorizontalPadding(
+                    percentage: 2),
               ],
             ),
-          ),
             Icon(Icons.camera, size: 200),
           ],
         ),
@@ -148,4 +172,6 @@ void launchWhatsApp({
           message)}"; // new line
     }
   }
+  Share.share(url(), subject: message);
+
 }
