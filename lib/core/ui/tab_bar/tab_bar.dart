@@ -11,6 +11,8 @@ import 'package:ojos_app/core/res/text_style.dart';
 import 'package:ojos_app/features/order/presentation/pages/attripute.dart';
 import 'package:share/share.dart';
 
+import 'camera_gallary.dart';
+
 class TabBarDemo extends StatefulWidget {
   @override
   State<TabBarDemo> createState() => _TabBarDemoState();
@@ -152,7 +154,7 @@ class _TabBarDemoState extends State<TabBarDemo> {
                     percentage: 2),
               ],
             ),
-            Icon(Icons.camera, size: 200),
+            ImagePickerWidget(),
           ],
         ),
       ),

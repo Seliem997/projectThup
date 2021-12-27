@@ -1462,6 +1462,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                         builder: (ctx) => AddToCartDialog(),
                       );*/
                     } else {
+
                       showDialog(
                         context: context,
                         builder: (ctx) => LoginFirstDialog(),
