@@ -61,37 +61,45 @@ class _WalletPageState extends State<WalletPage> {
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Container(
-                child: Column(
-                  children: [
-                    // VerticalPadding(
-                    //   percentage: 2.0,
-                    // ),
-                    // Container(
-                    //     padding: const EdgeInsets.only(
-                    //         left: EdgeMargin.min, right: EdgeMargin.min),
-                    //     child: _buildCoponTextWidget(
-                    //         context: context, width: width, height: 63.h)),
-                    // VerticalPadding(
-                    //   percentage: 2.0,
-                    // ),
-                    // Container(
-                    //     padding: const EdgeInsets.only(
-                    //         left: EdgeMargin.min, right: EdgeMargin.min),
-                    //     child: _buildPayMethodTextWidget(
-                    //         context: context, width: width, height: 41.h)),
-                    //
-                    // VerticalPadding(
-                    //   percentage: 2.0,
-                    // ),
-
-                    _buildProcessOnWalletList(
-                        context: context, width: width, height: 41.h),
-
-                    VerticalPadding(
-                      percentage: 4.0,
+                // child: Column(
+                //   children: [
+                //     // VerticalPadding(
+                //     //   percentage: 2.0,
+                //     // ),
+                //     // Container(
+                //     //     padding: const EdgeInsets.only(
+                //     //         left: EdgeMargin.min, right: EdgeMargin.min),
+                //     //     child: _buildCoponTextWidget(
+                //     //         context: context, width: width, height: 63.h)),
+                //     // VerticalPadding(
+                //     //   percentage: 2.0,
+                //     // ),
+                //     // Container(
+                //     //     padding: const EdgeInsets.only(
+                //     //         left: EdgeMargin.min, right: EdgeMargin.min),
+                //     //     child: _buildPayMethodTextWidget(
+                //     //         context: context, width: width, height: 41.h)),
+                //     //
+                //     // VerticalPadding(
+                //     //   percentage: 2.0,
+                //     // ),
+                //
+                //     _buildProcessOnWalletList(
+                //         context: context, width: width, height: 41.h),
+                //
+                //     VerticalPadding(
+                //       percentage: 4.0,
+                //     ),
+                //   ],
+                // ),
+                child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics( ),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => buildChatItem('img'),
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 15,
                     ),
-                  ],
-                ),
+                    itemCount: 8),
               ),
             )));
   }
@@ -286,3 +294,60 @@ class _WalletPageState extends State<WalletPage> {
     super.dispose();
   }
 }
+Row buildChatItem(String img) {
+  return Row(
+    children: [
+      CircleAvatar(
+        backgroundImage: NetworkImage(img),
+        radius: 30,
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'مصطفي سليم',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'مزيد من المعلومات عن نص الرساله',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+                Text(
+                  '20:37',
+                )
+              ],
+            )
+          ],
+        ),
+      )
+    ],
+  );
+}
+
